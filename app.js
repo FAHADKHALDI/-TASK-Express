@@ -1,9 +1,10 @@
 const express = require("express");
-const products = require("./products");
+const productRoutes = require("./apis/products/routes");
+
 const app = express();
+
+app.use(express.json());
+app.use("/api/products", productRoutes);
 
 const PORT = 8000;
 app.listen(PORT, () => console.log(`this app is running on localhost:${PORT}`));
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
